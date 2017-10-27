@@ -1,0 +1,3 @@
+class UqLibraries::Library
+
+end

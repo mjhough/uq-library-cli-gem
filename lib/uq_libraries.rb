@@ -1,2 +1,1 @@
-require_relative './uq-libraries/version'
-require_relative './uq-libraries/cli'
+require_relative '../config/environment'
