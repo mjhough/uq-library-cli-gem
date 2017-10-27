@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require './lib/uq_libraries.rb'
+
+test = UqLibraries::CLI.new
+test.welcome
+test.list_libraries
+test.user_input
