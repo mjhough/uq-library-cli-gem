@@ -2,8 +2,3 @@
 require './lib/uq_libraries.rb'
 
 UqLibraries::CLI.new.call
-
-# test = UqLibraries::CLI.new
-# test.welcome
-# test.list_libraries
-# test.user_input
