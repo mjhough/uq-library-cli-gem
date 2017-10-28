@@ -8,6 +8,20 @@ class UqLibraries::CLI
         user_input # Takes the user input and calls methods depending on input
     end
 
+
+    # Get library_array from scraper
+
+    # Welcome user
+
+    # Create Library
+
+    # Display list of libraries to user from Library.all and puts out how busy they are with a status of BUSY / NORMAL / QUIET
+
+    # Ask user for input and take that input to find Library in Library.all with index
+
+    # With the library found, puts each library level and it's details with a status of BUSY / NORMAL / QUIET
+
+
     def welcome
         puts "Welcome to the UQ Library Gem!"
         puts ""

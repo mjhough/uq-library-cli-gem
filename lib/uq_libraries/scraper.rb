@@ -18,7 +18,7 @@ class UqLibraries::Scraper
             library_page = row.css("a[href]")[0]["href"]
             library_url = "#{@base_url}#{library_page}"
 
-            libraries << {name: name, total_available: total_available, out_of_available: out_of_available, library_url: library_url}
+            libraries << {name: name, total_available: total_available, total_out_of_available: out_of_available, library_url: library_url}
         end
         libraries
     end
