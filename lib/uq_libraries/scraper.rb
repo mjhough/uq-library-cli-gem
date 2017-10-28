@@ -28,7 +28,7 @@ class UqLibraries::Scraper
 
         test = details_page.css("table.chart tr").collect do |level|
             right = level.css(".right").text.split
-            {name: level.css("a[href]").text, total_available: right[0], out_of_available: right[3]}
+            {level: level.css("a[href]").text, available: right[0], out_of_available: right[3]}
         end
     end
 end
