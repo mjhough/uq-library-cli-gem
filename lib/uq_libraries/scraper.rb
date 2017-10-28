@@ -32,7 +32,3 @@ class UqLibraries::Scraper
         end
     end
 end
-
-# UqLibraries::Scraper.scrape_details_page("https://www.library.uq.edu.au/uqlsm/availablepcsembed.php?branch=BSL")
-
-# UqLibraries::Scraper.scrape_details_page("https://www.library.uq.edu.au/uqlsm/availablepcsembed.php?branch=Duhig")
