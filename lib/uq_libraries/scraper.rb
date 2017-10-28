@@ -18,29 +18,58 @@ class UqLibraries::Scraper
             library_page = row.css("a[href]")[0]["href"]
             library_url = "#{@base_url}#{library_page}"
 
-            libraries << {name: name, available: available, out_of_available: out_of_available, library_url: library_url}
+            libraries << {name: name, total_available: total_available, out_of_available: out_of_available, library_url: library_url}
         end
     end
 
-    def self.scrape_details_page(library_url) #Incomplete
+    def self.scrape_details_page(library_url)
         library_levels = []
         details_page = Nokogiri::HTML(open(library_url))
 
-        details_page.css("a[href]")
-
-            level_one = nil
-            level_two = nil
-            level_three = nil
-            level_four = nil
-            level_five = nil
-            level_six = nil
-
-        library_levels << {level_one: level_one, level_two: level_two, level_three: level_three, level_four: level_four, level_five: level_five, level_six: level_six}
+        library_name = details_page.css("h3")
+        test = details_page.css("table tr").collect do |level|
+            case level.css("a[href]").text.downcase
+                when "level 1"
+                    total_available = level.css(".right").text.split(" ")[0]
+                    out_of_available = level.css(".right").text.split(" ")[3]
+                    level = {total_available: total_available, out_of_available: out_of_available}
+                when "level 2"
+                    total_available = level.css(".right").text.split(" ")[0]
+                    out_of_available = level.css(".right").text.split(" ")[3]
+                    level = {total_available: total_available, out_of_available: out_of_available}
+                when "level 3"
+                    total_available = level.css(".right").text.split(" ")[0]
+                    out_of_available = level.css(".right").text.split(" ")[3]
+                    level = {total_available: total_available, out_of_available: out_of_available}
+                when "level 4"
+                    total_available = level.css(".right").text.split(" ")[0]
+                    out_of_available = level.css(".right").text.split(" ")[3]
+                    level = {total_available: total_available, out_of_available: out_of_available}
+                when "level 5"
+                    total_available = level.css(".right").text.split(" ")[0]
+                    out_of_available = level.css(".right").text.split(" ")[3]
+                    level = {total_available: total_available, out_of_available: out_of_available}
+                when "level 6"
+                    total_available = level.css(".right").text.split(" ")[0]
+                    out_of_available = level.css(".right").text.split(" ")[3]
+                    level = {total_available: total_available, out_of_available: out_of_available}
+                else
+                    puts "ERROR: #{level.css("a[href]").text.downcase}"
+                    raise "There was an issue. Please submit an issue on GitHub: https://github.com/Tolenno/uq-library-cli-gem with a screenshot of the error".colorize(:red)
+            end
+        end
     end
 end
 
+# library_levels << {
+#     "#{library_name}" => {
+#         level_one: level_one_hash,
+#         level_two: level_two_hash,
+#         level_three: level_three_hash,
+#         level_four: level_four_hash, 
+#         level_five: level_five_hash,
+#         level_six: level_six_hash
+#     }
+# }
 
-
-# name = "a href" text
-# time = ".uqtext" text
-# available_pcs = ".right" text
+# UqLibraries::Scraper.scrape_details_page("https://www.library.uq.edu.au/uqlsm/availablepcsembed.php?branch=BSL")
