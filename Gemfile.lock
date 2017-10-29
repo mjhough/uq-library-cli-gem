@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    uq-library-cli-gem (0.1.0)
+    uq-libraries (0.1.0)
       colorize (~> 0.8.1)
 
 GEM
@@ -43,7 +43,7 @@ DEPENDENCIES
   pry
   rake (~> 12.0.0)
   rspec
-  uq-library-cli-gem!
+  uq-libraries!
 
 BUNDLED WITH
    1.15.4

@@ -1,7 +1,7 @@
 require_relative './lib/uq_libraries/version'
 
 Gem::Specification.new do |s|
-    s.name        = 'uq-library-cli-gem'
+    s.name        = 'uq-libraries'
     s.version     = UqLibraries::VERSION
     s.date        = '2017-10-28'
     s.summary     = "How busy are UQ libraries?"
@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
     s.authors     = ["Matt Hough"]
     s.email       = "matt@hough.tv"
     s.files       = ["lib/uq_libraries.rb", "lib/uq_libraries/cli.rb", "lib/uq_libraries/scraper.rb", "lib/uq_libraries/library.rb", "lib/uq_libraries/library_details.rb", "config/environment.rb"]
-    s.homepage    = 'http://rubygems.org/gems/uq-library-cli-gem'
+    s.homepage    = 'http://rubygems.org/gems/uq-libraries'
     s.license     = 'MIT'
     s.executables << 'uq-libraries'
 
