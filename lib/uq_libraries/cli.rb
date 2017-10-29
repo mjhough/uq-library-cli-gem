@@ -34,7 +34,6 @@ class UqLibraries::CLI
 
     def display_libraries
         all_libraries.each.with_index(1) do |library, index|
-            binding.pry
             puts "#{index}. #{library.name}: #{status(index)}"
         end
     end

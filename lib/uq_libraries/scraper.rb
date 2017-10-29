@@ -26,9 +26,9 @@ class UqLibraries::Scraper
     def self.scrape_details_page(library_url)
         details_page = Nokogiri::HTML(open(library_url))
 
-        test = details_page.css("table.chart tr").collect do |level|
+        details_page.css("table.chart tr").collect do |level|
             right = level.css(".right").text.split
-            {level: level.css("a[href]").text, available: right[0], out_of_available: right[3]}
+            {level: level.css(".left").text, available: right[0], out_of_available: right[3]}
         end
     end
 end
