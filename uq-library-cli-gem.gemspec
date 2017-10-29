@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
     s.description = "Shows users how busy a selected UQ library is."
     s.authors     = ["Matt Hough"]
     s.email       = "matt@hough.tv"
-    s.files       = ["lib/uq-libraries.rb", "lib/uq-libraries/cli.rb", "lib/uq-libraries/scraper.rb", "lib/uq-libraries/library.rb", "lib/uq-libraries/library_details.rb", "config/environment.rb"]
+    s.files       = ["lib/uq_libraries.rb", "lib/uq_libraries/cli.rb", "lib/uq_libraries/scraper.rb", "lib/uq_libraries/library.rb", "lib/uq_libraries/library_details.rb", "config/environment.rb"]
     s.homepage    = 'http://rubygems.org/gems/uq-library-cli-gem'
     s.license     = 'MIT'
     s.executables << 'uq-libraries'

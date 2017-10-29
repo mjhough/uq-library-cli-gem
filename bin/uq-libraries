@@ -2,3 +2,8 @@
 require_relative '../lib/uq_libraries'
 
 UqLibraries::CLI.new.call
+
+get '/' do
+    uq-libraries = UqLibraries::CLI.new
+    return uq-libraries.call
+   end
