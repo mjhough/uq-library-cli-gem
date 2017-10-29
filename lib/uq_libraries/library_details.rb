@@ -10,11 +10,11 @@ class UqLibraries::LibraryDetails
         @@all << self
     end
 
-    def self.create_from_collection(details_array)
+    def self.create_from_collection(details_array) # Creates library_details instance from array of hashes returned by Scraper#scrape_details_page
         details_array.each {|details_hash| self.new(details_hash)}
     end
 
-    def self.all
+    def self.all # Getter method for @@all array. Returns all LibraryDetails instances
         @@all
     end
 end

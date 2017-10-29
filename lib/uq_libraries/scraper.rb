@@ -1,11 +1,11 @@
 class UqLibraries::Scraper
 
-    @base_url = "https://www.library.uq.edu.au/uqlsm/"
-    @main_page = "availablepcsembed.php"
-    @main_url = "#{@base_url}#{@main_page}"
+    @base_url = "https://www.library.uq.edu.au/uqlsm/" # URL without page
+    @main_page = "availablepcsembed.php" # Page to append to URL
+    @main_url = "#{@base_url}#{@main_page}" # Adds page and URL together
     
 
-    def self.scrape_main_page
+    def self.scrape_main_page # Scrapes the main libraries page for primary details
         libraries = []
         frontpage = Nokogiri::HTML(open(@main_url))
 
@@ -23,7 +23,7 @@ class UqLibraries::Scraper
         libraries
     end
 
-    def self.scrape_details_page(library_url)
+    def self.scrape_details_page(library_url) # Scrapes library details page for secondary details
         details_page = Nokogiri::HTML(open(library_url))
 
         details_page.css("table.chart tr").collect do |level|

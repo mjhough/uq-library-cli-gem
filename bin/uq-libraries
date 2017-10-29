@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
-require './lib/uq_libraries.rb'
+require_relative '../lib/uq_libraries'
 
 UqLibraries::CLI.new.call
