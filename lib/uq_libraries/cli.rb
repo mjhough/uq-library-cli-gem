@@ -3,21 +3,21 @@ class UqLibraries::CLI
     def call
         welcome # Welcomes the user
 
-        list_libraries # Iterates through all libraries and lists them with an index
+        all_libraries # Iterates through all libraries and lists them with an index
 
         user_input # Takes the user input and calls methods depending on input
     end
 
 
-    # Get library_array from scraper
+    # Get library_array from scraper [DONE]
 
-    # Welcome user
+    # Welcome user [DONE]
 
-    # Create Library
+    # Create Libraries [DONE WITH ERROR]
 
-    # Display list of libraries to user from Library.all and puts out how busy they are with a status of BUSY / NORMAL / QUIET
+    # Display list of libraries to user from Library.all and puts out how busy they are with a status of BUSY / NORMAL / QUIET [DONE WITH ERROR]
 
-    # Ask user for input and take that input to find Library in Library.all with index
+    # Ask user for input and take that input to find Library in Library.all with index 
 
     # With the library found, puts each library level and it's details with a status of BUSY / NORMAL / QUIET
 
@@ -25,6 +25,30 @@ class UqLibraries::CLI
     def welcome
         puts "Welcome to the UQ Library Gem!"
         puts ""
+    end
+
+    def all_libraries
+        UqLibraries::Library.create_from_collection(UqLibraries::Scraper.scrape_main_page)
+        UqLibraries::Library.all
+    end
+
+    def display_libraries
+        all_libraries.each.with_index(1) do |library, index|
+            binding.pry
+            puts "#{index}. #{library.name}: #{status(index)}"
+        end
+    end
+
+    def status(index)
+        library = all_libraries[index - 1]
+
+        if library.total_available.to_i <= 0.3333333333 * library.total_out_of_available.to_i
+            "BUSY".colorize(:red)
+        elsif library.total_available.to_i > 0.3333333333 * library.total_out_of_available.to_i && library.total_available.to_i <= 0.666666666666 * library.total_out_of_available.to_i
+            "NORMAL".colorize(:yellow)
+        elsif library.total_available.to_i > 0.666666666666 * library.total_out_of_available.to_i
+            "QUIET".colorize(:green)
+        end
     end
 
     def list_libraries # Gets libraries from array and puts out their names preceded by their index starting at 1.
@@ -48,8 +72,8 @@ class UqLibraries::CLI
             print "> "
             input = gets.strip.downcase
 
-            if input == 1..12
-                more_info(input)
+            if input.to_i.between?(1, 12)
+                more_info(input.to_i - 1)
             elsif input == "list"
                 list_libraries
             else
@@ -60,7 +84,11 @@ class UqLibraries::CLI
     end
 
     def more_info(input) # Displays more information on the library using the input provided by the user (busy status for each level)
-        UqLibraries::Library.all[input].info
+        details = UqLibraries::Library.all[input].details
+
+        details.each do |level|
+        puts "#{level[:level]} has #{level[:available]} out of #{level[:out_of_available]} computers available.\n".colorize(:green)
+        end
     end
 
     def goodbye
