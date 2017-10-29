@@ -56,7 +56,7 @@ class UqLibraries::CLI
                 run_gem
             elsif input == "exit"
                 system "clear" or system "cls"
-                goodbye
+                exit
             else
                 system "clear" or system "cls"
                 puts "\nThat's not a library! Enter the index number of a library (1-9) or type 'list' for a list of libraries.".colorize(:red)
@@ -81,11 +81,5 @@ class UqLibraries::CLI
                 puts "#{level[:level]} has #{level[:available]} computers available out of #{level[:out_of_available]}".gsub("Entry ", "")
             end
         end
-    end
-
-    def goodbye # Helper method for #run_gem
-        puts "Bye driver!\n\n"
-        puts "Bye!\n\n"
-        puts "BYE!!"
     end
 end
