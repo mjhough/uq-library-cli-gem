@@ -19,5 +19,6 @@ Gem::Specification.new do |s|
     s.add_development_dependency "rake", "~> 12.0.0"
     s.add_development_dependency "rspec", ">= 0"
     s.add_development_dependency "nokogiri", ">= 0"
-    s.add_development_dependency "pry", ">= 0"
+    
+    s.add_dependency "pry", ">= 0"
 end
