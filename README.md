@@ -1,5 +1,8 @@
+# NOTE: It appears that the University of Queensland has removed the endpoint needed to scrape the available library seats. Hence, this gem no longer works. :(
+
 # uq-library-cli-gem
 A CLI gem that scrapes https://www.library.uq.edu.au/uqlsm/availablepcsembed.php and shows how busy different University of Queensland libraries are.
+
 
 # UQ Libraries
 
